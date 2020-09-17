@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Test</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script>
+        let computerSelection;
+        let result;
+        let playerSelection
+        let playerWins = 0;
+        let computerWins = 0;
+
+        game();
+
+        if (playerWins > computerWins){
+            console.log(`congratulations, you won ${ playerWins } games out of 5!`);
+        }
+        else if (computerWins > playerWins){
+            console.log(`You won ${ playerWins } out of 5. Better luck next time`)
+        }
+        else {
+            console.log('Draw!')
+        }
+        
+
+        function playerSelect() {
+            playerSelection = prompt("Make your choice");
+            if (playerSelection.toLowerCase() == 'rock') {
+                playerSelection = 0;
+            }
+            else if (playerSelection.toLowerCase() == 'paper') {
+                playerSelection = 1;
+            }
+            else if (playerSelection.toLowerCase() == 'scissors') {
+                playerSelection = 2;
+            }
+            else {
+                alert("Invalid choice!")
+                
+            }
+        }
+
+
+        function computerPlay(rand) {
+            computerSelection = rand;
+        }
+
+        function round(player, computer) {
+            if (player === computer) {
+                result = 'Draw!';
+            }
+            else if ((player == 0) && (computer == 1)) {
+                result = 'You lose! Paper wraps rock!';
+                computerWins++
+            }
+            else if ((player == 0) && (computer == 2)) {
+                result = 'You win! Rock blunts scissors';
+                playerWins++                
+            }
+            else if ((player == 1) && (computer == 2)) {
+                result = 'You lose! Scissors cut paper'
+                computerWins++;
+            }
+            else if ((player == 1) && (computer == 0)) {
+                result = 'You win! Paper wraps rock';
+                playerWins++
+            }
+            else if ((player == 2) && (computer == 0)) {
+                result = 'You lose! Rock blunts scissors';
+                computerWins++
+            }
+            else if ((player == 2) && (computer == 1)) {
+                result = 'You win! Scissors cut paper';
+                playerWins++
+            }
+            console.log(result);
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                computerPlay(Math.floor(Math.random() * 3));              
+                playerSelect();                           
+                round (playerSelection, computerSelection);
+            }
+        }
+
+
+
+        
+
+
+
+    </script>
+</body>
+
+</html>
