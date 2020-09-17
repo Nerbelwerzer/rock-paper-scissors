@@ -16,19 +16,20 @@
 
         game();
 
-        if (playerWins > computerWins){
-            console.log(`congratulations, you won ${ playerWins } games out of 5!`);
+        if (playerWins > computerWins) {
+            console.log(`congratulations, you won ${playerWins} games out of 5!`);
         }
-        else if (computerWins > playerWins){
-            console.log(`You won ${ playerWins } out of 5. Better luck next time`)
+        else if (computerWins > playerWins) {
+            console.log(`You won ${playerWins} out of 5. Better luck next time.`)
         }
         else {
             console.log('Draw!')
         }
-        
+
 
         function playerSelect() {
-            playerSelection = prompt("Make your choice");
+            
+            playerSelection = prompt("Make your choice: rock, paper, or scissors...");
             if (playerSelection.toLowerCase() == 'rock') {
                 playerSelection = 0;
             }
@@ -40,13 +41,13 @@
             }
             else {
                 alert("Invalid choice!")
-                
             }
+        
         }
 
 
-        function computerPlay(rand) {
-            computerSelection = rand;
+        function computerPlay(input) {
+            computerSelection = input;
         }
 
         function round(player, computer) {
@@ -59,7 +60,7 @@
             }
             else if ((player == 0) && (computer == 2)) {
                 result = 'You win! Rock blunts scissors';
-                playerWins++                
+                playerWins++
             }
             else if ((player == 1) && (computer == 2)) {
                 result = 'You lose! Scissors cut paper'
@@ -82,18 +83,11 @@
 
         function game() {
             for (let i = 0; i < 5; i++) {
-                computerPlay(Math.floor(Math.random() * 3));              
-                playerSelect();                           
-                round (playerSelection, computerSelection);
+                computerPlay(Math.floor(Math.random() * 3));
+                playerSelect();
+                round(playerSelection, computerSelection);
             }
         }
-
-
-
-        
-
-
-
     </script>
 </body>
 
