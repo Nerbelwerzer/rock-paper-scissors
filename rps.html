@@ -13,22 +13,22 @@
         let playerSelection
         let playerWins = 0;
         let computerWins = 0;
+        let draws = 0;
 
         game();
 
         if (playerWins > computerWins) {
-            console.log(`congratulations, you won ${playerWins} games out of 5!`);
+            console.log(`Congratulations, you won the best of 5! Final score: W:${ playerWins} L:${computerWins} D:${draws}`);
         }
         else if (computerWins > playerWins) {
-            console.log(`You won ${playerWins} out of 5. Better luck next time.`)
+            console.log(`Better luck next time. Final score: W:${ playerWins} L:${computerWins} D:${draws}`)
         }
         else {
-            console.log('Draw!')
+            console.log('A draw? That shouldn\'t be possible...')
         }
 
 
         function playerSelect() {
-            
             playerSelection = prompt("Make your choice: rock, paper, or scissors...");
             if (playerSelection.toLowerCase() == 'rock') {
                 playerSelection = 0;
@@ -42,9 +42,7 @@
             else {
                 alert("Invalid choice!")
             }
-        
         }
-
 
         function computerPlay(input) {
             computerSelection = input;
@@ -52,42 +50,44 @@
 
         function round(player, computer) {
             if (player === computer) {
-                result = 'Draw!';
+                draws++;
+                result = `Draw!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
             }
             else if ((player == 0) && (computer == 1)) {
-                result = 'You lose! Paper wraps rock!';
                 computerWins++
+                result = `You lose! Paper wraps rock!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
             }
             else if ((player == 0) && (computer == 2)) {
-                result = 'You win! Rock blunts scissors';
                 playerWins++
+                result = `You win! Rock blunts scissors!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;                
             }
             else if ((player == 1) && (computer == 2)) {
-                result = 'You lose! Scissors cut paper'
                 computerWins++;
+                result = `You lose! Scissors cut paper!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`
             }
             else if ((player == 1) && (computer == 0)) {
-                result = 'You win! Paper wraps rock';
                 playerWins++
+                result = `You win! Paper wraps rock!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
             }
             else if ((player == 2) && (computer == 0)) {
-                result = 'You lose! Rock blunts scissors';
                 computerWins++
+                result = `You lose! Rock blunts scissors!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
             }
             else if ((player == 2) && (computer == 1)) {
-                result = 'You win! Scissors cut paper';
                 playerWins++
+                result = `You win! Scissors cut paper! Scores: W:${ playerWins} L:${computerWins} D:${draws}`;                
             }
             console.log(result);
         }
 
         function game() {
-            for (let i = 0; i < 5; i++) {
+            do {
                 computerPlay(Math.floor(Math.random() * 3));
                 playerSelect();
                 round(playerSelection, computerSelection);
+                }
+            while (playerWins < 3 && computerWins < 3)
             }
-        }
     </script>
 </body>
 
