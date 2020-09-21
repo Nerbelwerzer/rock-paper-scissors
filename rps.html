@@ -2,93 +2,38 @@
 <html>
 
 <head>
-    <title>Test</title>
+    <title>Rock, Paper, Scissors</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
-    <script>
-        let computerSelection;
-        let result;
-        let playerSelection
-        let playerWins = 0;
-        let computerWins = 0;
-        let draws = 0;
-
-        game();
-
-        if (playerWins > computerWins) {
-            console.log(`Congratulations, you won the best of 5! Final score: W:${ playerWins} L:${computerWins} D:${draws}`);
-        }
-        else if (computerWins > playerWins) {
-            console.log(`Better luck next time. Final score: W:${ playerWins} L:${computerWins} D:${draws}`)
-        }
-        else {
-            console.log('A draw? That shouldn\'t be possible...')
-        }
-
-
-        function playerSelect() {
-            playerSelection = prompt("Make your choice: rock, paper, or scissors...");
-            if (playerSelection.toLowerCase() == 'rock') {
-                playerSelection = 0;
-            }
-            else if (playerSelection.toLowerCase() == 'paper') {
-                playerSelection = 1;
-            }
-            else if (playerSelection.toLowerCase() == 'scissors') {
-                playerSelection = 2;
-            }
-            else {
-                alert("Invalid choice!")
-            }
-        }
-
-        function computerPlay(input) {
-            computerSelection = input;
-        }
-
-        function round(player, computer) {
-            if (player === computer) {
-                draws++;
-                result = `Draw!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
-            }
-            else if ((player == 0) && (computer == 1)) {
-                computerWins++
-                result = `You lose! Paper wraps rock!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
-            }
-            else if ((player == 0) && (computer == 2)) {
-                playerWins++
-                result = `You win! Rock blunts scissors!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;                
-            }
-            else if ((player == 1) && (computer == 2)) {
-                computerWins++;
-                result = `You lose! Scissors cut paper!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`
-            }
-            else if ((player == 1) && (computer == 0)) {
-                playerWins++
-                result = `You win! Paper wraps rock!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
-            }
-            else if ((player == 2) && (computer == 0)) {
-                computerWins++
-                result = `You lose! Rock blunts scissors!  Scores: W:${ playerWins} L:${computerWins} D:${draws}`;
-            }
-            else if ((player == 2) && (computer == 1)) {
-                playerWins++
-                result = `You win! Scissors cut paper! Scores: W:${ playerWins} L:${computerWins} D:${draws}`;                
-            }
-            console.log(result);
-        }
-
-        function game() {
-            do {
-                computerPlay(Math.floor(Math.random() * 3));
-                playerSelect();
-                round(playerSelection, computerSelection);
-                }
-            while (playerWins < 3 && computerWins < 3)
-            }
-    </script>
+    <main>
+        <h1></h1>
+        <div id="buttons">
+            <button id="0">Rock</button>
+            <button id="1">Paper</button>
+            <button id="2">Scissors</button>
+        </div>
+        <div id="results">Welcome. Choose your weapon.</div>
+        <div id="scoreBoard">
+            <div class="scores">
+                <h3>Wins</h3>
+                <p id="playerTally">0</p>
+            </div>
+            <div class="scores">
+                <h3>Draws</h3>
+                <p id="drawTally">0</p>
+            </div>
+            <div class="scores">
+                <h3>Losses</h3>
+                <p id="computerTally">0</p>
+            </div>
+        </div>
+        
+    </main>
+    <script src="javascript.js"></script>
 </body>
 
 </html>
