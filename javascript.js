@@ -30,7 +30,7 @@ function round(player, computer) {
         playerScore()
     }
     else if ((player == 1) && (computer == 2)) {
-        result = `You win! Rock blunts scissors!`;
+        result = `You lose! Scissors cuts paper!`;
         computerScore()
     }
     else if ((player == 1) && (computer == 0)) {
